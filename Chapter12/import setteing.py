@@ -1,21 +1,32 @@
-import sys
-import pygame as pg
-from  settings  import   Settings
+import pygame
+# noinspection PyUnresolvedReferences
+from settings import Settings
+# noinspection PyUnresolvedReferences
+from ship import Ship
+# noinspection PyUnresolvedReferences
+import game_functions as gf
+
+
 
 def run_game():
     #初始化pygame，设置和屏幕对象
-    pg.init()
+    pygame.init()
     ai_settings = Settings()
-    screen = pg.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
-    pg.display.set_caption("Allien Invasion")
+    screen = pygame .display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
+    pygame.display.set_caption("Allien Invasion")
+
+    #创建一个飞船
+    #创建这个名称的时候，实例的名字不可以和类的名字一致
+    ship = Ship(screen)
 
     #开始游戏主循环
     while True:
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                sys.exit()
+       gf.check_events()
 
-        screen.fill(ai_settings.bg_color)
+       #每次循环时都重绘屏幕
+       screen.fill(ai_settings.bg_color)
+       ship.blitme()
 
-        pg.display.flip()
+       #让最近绘制的屏幕可见
+       pygame.display.flip()
 run_game()
