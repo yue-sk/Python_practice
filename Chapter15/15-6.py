@@ -37,7 +37,6 @@ hist = pygal.Bar()
 hist.title = "Results of folling one D6 1000 times"
 numbers = list(range(1,die.num_sides))
 print(numbers)
-print(range(1,9))
 #hist.x_labels = ['1','2','3','4','5','6']
 hist.x_labels = numbers
 hist.x_title = "Result"
